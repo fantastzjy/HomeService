@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${wbeParameter.name}">Tour Packer</title>
+    <!-- Fav and Touch Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" href="/resource/common/layui/css/layui.css" media="all"/>
+    <link rel="shortcut icon" href="images/ico/favicon.png">
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="/resource/css/front/bootstrap.min.css" media="screen">
+    <link href="/resource/css/front/animate.css" rel="stylesheet">
+    <link href="/resource/css/front/main.css" rel="stylesheet">
+    <link href="/resource/css/front/component.css" rel="stylesheet">
+    <link href="/resource/css/front/style.css" rel="stylesheet">
+    <!-- CSS Font Icons -->
+    <link rel="stylesheet" href="/resource/css/front/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/rivolicons/style.css">
+    <link href="/resource/common/city-picker/city-picker.css" rel="stylesheet"/>
+    <!-- CSS 自定义主题设置-->
+    <link th:href="'/resource/css/front/custom/'+${arguments.colorMain}+'.css'" rel="stylesheet">
+</head>
+
+
+<body class="">
+
+<!-- start Container Wrapper -->
+<div class="container-wrapper">
+    <header id="header" th:replace="front/public:: header"></header>
+    <div class="clear"></div>
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <!-- start end Page title -->
+        <div class="page-title" th:style="${'background: url('+wbeParameter.otherImg+')'}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                        <h1 class="hero-title">Personal Center</h1>
+                        <ol class="breadcrumb-list">
+                            <li><a href="/front/index.do">主页</a></li>
+                            <li><span>服务列表</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end Page title -->
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-9">
+                        <div class="blog-wrapper">
+                            <div class="blog-item" th:each="postInfo:${postInfoList}">
+                                <div class="blog-media">
+                                    <div class="overlay-box">
+                                        <a class="blog-image" th:href="${'/front/postInfoDetail.do?id='+postInfo.id}">
+                                            <img th:src="${postInfo.img}" style="width: 500px" alt=""/>
+                                            <div class="image-overlay" style="width: 500px">
+                                                <div class="overlay-content">
+                                                    <div class="overlay-icon"><i class="pe-7s-link"></i></div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3><a th:href="${'/front/postInfoDetail.do?id='+postInfo.id}" class="inverse"
+                                           th:text="${postInfo.name}"></a></h3>
+                                    <ul class="blog-meta clearfix">
+                                        <li>by <a href="#" th:text="${postInfo.userName}">Admin</a></li>
+                                        <li>by <span th:text="${#strings.substring(postInfo.createTime,0,11)}"></span>
+                                        </li>
+                                        <li>标签 <a th:text="${postInfo.categoryName}">Adventure</a></li>
+                                        <li th:text="${postInfo.observer+'条评论'}"></li>
+                                        <li>价格/小时 <a th:text="${'￥'+postInfo.price}">Adventure</a></li>
+                                    </ul>
+                                    <div class="blog-entry">
+                                        <p th:text="${postInfo.introduce}"></p>
+                                    </div>
+                                    <a th:href="${'/front/postInfoDetail.do?id='+postInfo.id}" class="btn-blog"> 查看详情 <i
+                                            class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="pager-wrappper mt-0 clearfix">
+                                <div class="pager-innner">
+                                    <!--<div class="flex-row flex-align-middle">-->
+                                    <!--<div class="flex-column flex-sm-12">-->
+                                    <!--Showing reslut 1 to 15 from 248-->
+                                    <!--</div>-->
+                                    <!--<div class="flex-column flex-sm-12">-->
+                                    <!--<nav class="pager-right">-->
+                                    <!--<ul class="pagination">-->
+                                    <!---->
+                                    <!--</ul>-->
+                                    <!--</nav>-->
+                                    <!--</div>-->
+
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-3 mt-50-xs">
+                        <aside class="sidebar">
+                            <div class="sidebar-inner no-border for-blog">
+                                <div class="sidebar-module">
+                                    <div class="sidebar-module-inner">
+                                        <div class="sidebar-mini-search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control searchName"
+                                                       placeholder="Search for...">
+                                                <span class="input-group-btn">
+														<button class="btn btn-primary searchBtn" type="button">
+                                                            <i class="fa fa-search "></i></button>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="sidebar-module">
+                                    <h4 class="sidebar-title">更多分类</h4>
+                                    <div class="sidebar-module-inner">
+                                        <ul class="sidebar-category">
+                                            <li th:each="postCategory:${postCategoryList}">
+                                                <a th:href="${'/front/postInfoList.do?categoryName='+postCategory.name}"
+                                                   th:text="${postCategory.name}">Business</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="sidebar-module">
+                                    <h4 class="sidebar-title">最新服务</h4>
+                                    <div class="sidebar-module-inner">
+                                        <ul class="sidebar-post">
+                                            <li class="clearfix" th:each="item:${listOrderTime}">
+                                                <a th:href="${'/front/postInfoDetail.do?id='+item.id}">
+                                                    <div class="image" th:if="${item.img !=null && item.img !=''}">
+                                                        <img th:src="${item.img}" alt="Popular Post"/>
+                                                    </div>
+                                                    <div class="content"
+                                                         th:style="${item.img !=null && item.img !=''?'margin-left: 90px':'margin-left: 10px'}">
+                                                        <h6 th:text="${item.name}">Enough around remove to barton agreed
+                                                            regret</h6>
+                                                        <p class="recent-post-sm-meta"><i
+                                                                class="fa fa-clock-o mr-5"></i><span
+                                                                th:text="${#strings.substring(item.createTime,0,11)}"></span>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="sidebar-module">
+                                    <h4 class="sidebar-title">最热服务</h4>
+                                    <div class="sidebar-module-inner">
+                                        <ul class="sidebar-post">
+                                            <li class="clearfix" th:each="item:${listOrderObs}">
+                                                <a th:href="${'/front/postInfoDetail.do?id='+item.id}">
+                                                    <div class="image" th:if="${item.img !=null && item.img !=''}">
+                                                        <img th:src="${item.img}" alt="Popular Post"/>
+                                                    </div>
+                                                    <div class="content"
+                                                         th:style="${item.img !=null && item.img !=''?'margin-left: 90px':'margin-left: 10px'}">
+                                                        <h6 th:text="${item.name}">Enough around remove to barton agreed
+                                                            regret</h6>
+                                                        <p class="recent-post-sm-meta"><i
+                                                                class="fa fa-comments mr-5"></i><span
+                                                                th:text="${item.observer}"></span>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- end Main Wrapper -->
+    <footer id="footer" th:replace="front/public:: footer"></footer>
+</div>  <!-- end Container Wrapper -->
+
+
+<!-- start Back To Top -->
+<div id="back-to-top">
+    <a href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- end Back To Top -->
+
+
+<!-- JS -->
+<script type="text/javascript" src="/resource/js/front/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/resource/js/front/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.slicknav.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.placeholder.min.js"></script>
+<!--<script type="text/javascript" src="js/instagram.min.js"></script>-->
+<script type="text/javascript" src="/resource/js/front/spin.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.introLoader.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/select2.full.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.responsivegrid.js"></script>
+<script type="text/javascript" src="/resource/js/front/ion.rangeSlider.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/readmore.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/slick.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/validator.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.raty.js"></script>
+<script type="text/javascript" src="/resource/js/front/customs.js"></script>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['jquery', 'table', 'layer', 'laydate', 'layedit', 'form', 'upload'], function () {
+        var table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            form = layui.form;
+        var uploadInst = upload.render({
+            elem: '#img'
+            , url: '/upload.do'
+            , done: function (res) {
+                console.log(res)
+                //如果上传失败
+                if (!res.status) {
+                    return layer.msg('上传失败');
+                }
+                $("#img").val(res.obje);
+                return layer.msg('上传成功');
+            }
+            , error: function () {
+                return layer.msg('上传失败');
+            }
+        });
+        $('.searchBtn').on('click', function () {
+            var searchName = $('.searchName').val();
+            location.href = '/front/postInfoList.do?searchName=' + searchName
+        })
+        form.on('submit(Submit)', function (data) {
+            data.field.content = layedit.getContent(index);
+            $.ajax({
+                url: '/postInfo/postInfo.do',
+                type: 'post',
+                data: data.field,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        layer.msg("发布成功!", {
+                            time: 900,
+                            end: function () {
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        layer.msg(status.msg);
+                    }
+                }
+
+            });
+        });
+        layedit.set({
+            uploadImage: {
+                url: '/layeditUpload.do'
+            }
+        });
+        var index = layedit.build('content');
+    });
+</script>
+
+</body>
+
+</html>

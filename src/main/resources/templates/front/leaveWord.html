@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${wbeParameter.name}">Tour Packer</title>
+    <!-- Fav and Touch Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" href="/resource/common/layui/css/layui.css" media="all"/>
+    <link rel="shortcut icon" href="images/ico/favicon.png">
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="/resource/css/front/bootstrap.min.css" media="screen">
+    <link href="/resource/css/front/animate.css" rel="stylesheet">
+    <link href="/resource/css/front/main.css" rel="stylesheet">
+    <link href="/resource/css/front/component.css" rel="stylesheet">
+    <link href="/resource/css/front/style.css" rel="stylesheet">
+    <!-- CSS Font Icons -->
+    <link rel="stylesheet" href="/resource/css/front/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/rivolicons/style.css">
+    <link href="/resource/common/city-picker/city-picker.css" rel="stylesheet"/>
+    <!-- CSS 自定义主题设置-->
+    <link th:href="'/resource/css/front/custom/'+${arguments.colorMain}+'.css'" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- BEGIN # MODAL LOGIN -->
+
+<!-- END # MODAL LOGIN -->
+
+<!-- start Container Wrapper -->
+<div class="container-wrapper">
+
+    <!-- start Header -->
+    <header id="header" th:replace="front/public:: header"></header>
+
+    <div class="clear"></div>
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <!-- start end Page title -->
+        <div class="page-title" th:style="${'background: url('+wbeParameter.otherImg+')'}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                        <h1 class="hero-title">论坛</h1>
+                        <ol class="breadcrumb-list">
+                            <li><a href="index.html">Homepage</a></li>
+                            <li><span>Blog</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Page title -->
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="blog-wrapper">
+                            <div class="blog-item blog-single">
+                                <h4 class="uppercase"><span th:text="${leaveWordListNum}"></span> 条信息</h4>
+                                <div id="comment-wrapper">
+                                    <ul class="comment-item" th:each="leaveWord:${leaveWordList}">
+                                        <li>
+                                            <div class="comment-avatar">
+                                                <img th:src="${leaveWord.userImg}" alt="author image"/>
+                                            </div>
+                                            <div class="comment-header">
+                                                <a class="comment-reply" th:id="${leaveWord.id}" th:if="${go_in}">回复</a>
+                                                <h6 class="heading mt-0" th:text="${leaveWord.userName}">Ibrahim ibn
+                                                    al-Walid</h6>
+                                                <span class="comment-time"
+                                                      th:text="${#strings.substring(leaveWord.time,0,19)}">23 minutes</span>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p th:text="${leaveWord.content}"></p>
+                                                <span class="delete" style="cursor: pointer;color: #D65049"
+                                                      th:id="${leaveWord.id}"
+                                                      th:if="${leaveWord.isMe eq 'yes'}">删除</span>
+                                            </div>
+                                            <ul class="comment-item">
+                                                <li th:each="answering:${leaveWord.answeringList}">
+                                                    <div class="comment-avatar">
+                                                        <img th:src="${answering.userImg}" alt="author image"/>
+                                                    </div>
+                                                    <div class="comment-header">
+                                                        <h6 class="heading mt-0" th:text="${answering.userName}">Ibrahim
+                                                            ibn al-Walid</h6>
+                                                        <span class="comment-time"
+                                                              th:text="${#strings.substring(answering.time,0,19)}">18 minutes</span>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p th:text="${answering.content}"></p>
+                                                        <span class="deleteAnswering"
+                                                              style="cursor: pointer;color: #D65049"
+                                                              th:id="${answering.id}"
+                                                              th:if="${answering.isMe eq 'yes'}">删除</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                    <!--<div class="text-center">-->
+                                    <!--<a href="#" class="btn btn-primary">Load More</a>-->
+                                    <!--</div>-->
+                                </div><!-- End Comment -->
+                                <h3 class="uppercase" th:if="${go_in}">我想说点什么</h3>
+                                <div method="post" id="contactForm" action="post" class="comment-form" th:if="${go_in}">
+                                    <div class="clear"></div>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-30">
+                                            <div class="form-group">
+                                                <label for="comment-message">内容 <span
+                                                        class="text-danger">*</span></label>
+                                                <textarea name="message" id="comment-message" class="form-control"
+                                                          rows="8"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary leaveWord-submit-btn">提交
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start Back To Top -->
+    <div id="back-to-top">
+        <a href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <!-- end Back To Top -->
+</div>
+<!-- JS -->
+<script type="text/javascript" src="/resource/js/front/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/resource/js/front/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.slicknav.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.placeholder.min.js"></script>
+<!--<script type="text/javascript" src="js/instagram.min.js"></script>-->
+<script type="text/javascript" src="/resource/js/front/spin.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.introLoader.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/select2.full.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.responsivegrid.js"></script>
+<script type="text/javascript" src="/resource/js/front/ion.rangeSlider.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/readmore.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/slick.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/validator.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.raty.js"></script>
+<script type="text/javascript" src="/resource/js/front/customs.js"></script>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['jquery', 'table', 'layer', 'laydate', 'form',], function () {
+        var table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            form = layui.form;
+        //回复弹窗
+        $('.comment-reply').on('click', function () {
+            var id = $(this).attr("id");
+            layer.open({
+                type: 2,
+                title: "回复",
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area: ['600px', '500px'],
+                content: "/front/addAnswering.do?leaveWordId=" + id
+            });
+        })
+        //提交留言功能
+        $('.leaveWord-submit-btn').on('click', function () {
+            var content = $('#comment-message').val();
+            $.ajax({
+                url: '/leaveWord/leaveWord.do',
+                type: 'post',
+                data: {"content": content},
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        layer.alert("提交成功!", {
+                            time: 2000,
+                            end: function () {
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        layer.msg("提交失败!")
+                    }
+                }
+            });
+        })
+        //删除留言功能
+        $('.delete').on('click', function () {
+            //留言id
+            var id = $(this).attr("id");
+            console.log(id);
+            $.ajax({
+                url: '/leaveWord/leaveWord.do',
+                type: 'post',
+                data: {_method: "DELETE", "id": id},
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        layer.alert("删除成功!", {
+                            time: 2000,
+                            end: function () {
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        layer.msg("删除失败!")
+                    }
+                }
+            });
+        })
+        //删除留言回复功能
+        $('.deleteAnswering').on('click', function () {
+            //留言回复id
+            var id = $(this).attr("id");
+            console.log(id);
+            $.ajax({
+                url: '/leaveWord/answering.do',
+                type: 'post',
+                data: {_method: "DELETE", "id": id},
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        layer.alert("删除成功!", {
+                            time: 2000,
+                            end: function () {
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        layer.msg("删除失败!")
+                    }
+                }
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

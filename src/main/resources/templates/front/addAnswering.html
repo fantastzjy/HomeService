@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="/resource/common/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resource/css/public.css" media="all"/>
+</head>
+<style>
+</style>
+<body>
+<div class="layui-form" style="margin:auto;margin-top:30px;width: 90%">
+    <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block">
+            <textarea type="text" name="content" autocomplete="off" placeholder="回复内容"
+                      class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <input hidden name="leaveId" th:value="${leaveWordId}">
+        <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="Submit">立即提交</button>
+        <button type="" class="layui-btn layui-btn-primary close">取消</button>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+<script type="text/javascript" src=" /resource/js/user.js"></script>
+<script type="text/javascript">
+
+
+    layui.use(['table', 'layer', 'laydate', 'form', 'upload', 'layedit'], function () {
+        var table = layui.table,
+            $ = layui.$,
+            upload = layui.upload,
+            laydate = layui.laydate,
+            layedit = layui.layedit,
+            layer = layui.layer,
+            form = layui.form
+        form.on('submit(Submit)', function (data) {
+            $.ajax({
+                url: '/leaveWord/answering.do',
+                type: 'post',
+                data: data.field,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        alert("回复成功!");
+                        parent.location.reload();
+                        parent.layer.close(parent.layer.getFrameIndex(window.name));
+                    } else {
+                        layer.msg("回复失败!")
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>

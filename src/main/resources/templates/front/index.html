@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${wbeParameter.name}">Tour Packer</title>
+    <!-- Fav and Touch Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" href="/resource/common/layui/css/layui.css" media="all"/>
+    <link rel="shortcut icon" href="images/ico/favicon.png">
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="/resource/css/front/bootstrap.min.css" media="screen">
+    <link href="/resource/css/front/animate.css" rel="stylesheet">
+    <link href="/resource/css/front/main.css" rel="stylesheet">
+    <link href="/resource/css/front/component.css" rel="stylesheet">
+    <link href="/resource/css/front/style.css" rel="stylesheet">
+    <!-- CSS Font Icons -->
+    <link rel="stylesheet" href="/resource/css/front/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/rivolicons/style.css">
+    <link href="/resource/common/city-picker/city-picker.css" rel="stylesheet"/>
+    <!-- CSS 自定义主题设置-->
+    <link th:href="'/resource/css/front/custom/'+${arguments.colorMain}+'.css'" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- BEGIN # MODAL LOGIN -->
+
+<!-- END # MODAL LOGIN -->
+
+<!-- start Container Wrapper -->
+<div class="container-wrapper">
+
+    <!-- start Header -->
+    <header id="header" th:replace="front/public:: header"></header>
+
+    <div class="clear"></div>
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- start hero-header with windows height -->
+        <div class="hero"
+             th:style="${'background: url('+wbeParameter.img+');position: relative;background-position: center center;background-repeat: no-repeat;background-size: cover;'}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <h1 class="hero-title" th:text="${wbeParameter.name}">Tour with Tour Packer</h1>
+                        <p class="lead">You are welcome to use this website</p>
+
+                    </div>
+                </div>
+                <div class="main-search-wrapper full-width">
+                    <!--<div class="inner">-->
+                    <!--<div class="column-item">-->
+                    <!--<div class="form-group">-->
+                    <!--<input placeholder="出发地" id="startPlace" class="layui-input"-->
+                    <!--style="width: 208px;color: #0C0C0C">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="column-item">-->
+                    <!--<div class="form-group">-->
+                    <!--<select name="destination" class="select2-multi form-control " id="city"-->
+                    <!--data-placeholder="选择目的地" multiple>-->
+                    <!--<option value="">选择目的地</option>-->
+                    <!--<option value="" th:each="chdClassify:${chdClassifyList}"-->
+                    <!--th:text="${chdClassify.name}" th:value="${chdClassify.name}">选择目的地-->
+                    <!--</option>-->
+                    <!--</select>-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="column-item">-->
+                    <!--<div class="form-group">-->
+                    <!--<input placeholder="出发时间" id="goTime" class="layui-input"-->
+                    <!--style="width: 208px;color: #0C0C0C">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="column-item for-btn">-->
+                    <!--<div class="form-group">-->
+                    <!--<a class="btn btn-primary btn-block buyTicket">购票</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end hero-header with windows height -->
+
+        <div class="post-hero bg-light">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="featured-count clearfix">
+                            <div class="icon"><i class="pe-7s-map-marker"></i></div>
+                            <div class="content">
+                                <h6>300+ Users Everywhere</h6>
+                                <span>Users from all over the country.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="featured-count clearfix">
+                            <div class="icon"><i class="pe-7s-user"></i></div>
+                            <div class="content">
+                                <h6>20000+ Happy Customers</h6>
+                                <span>Everyone got what they wanted.</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="featured-count clearfix">
+                            <div class="icon"><i class="pe-7s-smile"></i></div>
+                            <div class="content">
+                                <h6>500+ Satisfaction Degree</h6>
+                                <span>Everyone left with satisfaction.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <section>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                            <div class="section-title">
+                                <h3>welcome</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid destination-grid-wrapper">
+                        <div class="grid-item" data-colspan="10" data-rowspan="10">
+                            <a href="result-grid.html" class="top-destination-image-bg"
+                               style="background-image:url('/resource/image/game2.jpg');">
+                                <div class="relative">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="grid-item" data-colspan="10" data-rowspan="4">
+                            <a href="result-grid.html" class="top-destination-image-bg"
+                               style="background-image:url('/resource/image/game1.jpg');">
+                                <div class="relative">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="grid-item" data-colspan="5" data-rowspan="6">
+                            <a href="result-grid.html" class="top-destination-image-bg"
+                               style="background-image:url('/resource/image/game3.jpg');">
+                                <div class="relative">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="grid-item" data-colspan="5" data-rowspan="6">
+                            <a href="result-grid.html" class="top-destination-image-bg"
+                               style="background-image:url('/resource/image/game4.jpg');">
+                                <div class="relative">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                            <div class="section-title">
+                                <h3>热评推荐</h3>
+                                <p>Hot voting activities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="GridLex-gap-30-wrappper package-grid-item-wrapper">
+                        <div class="GridLex-grid-noGutter-equalHeight">
+                            <div class="GridLex-col-4_sm-6_xs-12 mb-30" th:each="postInfo:${postInfoList}">
+                                <div class="package-grid-item">
+                                    <a th:href="${'/front/postInfoDetail.do?id='+postInfo.id}">
+                                        <div class="image">
+                                            <img th:src="${postInfo.img}" style="width: 360px;height: 240px"
+                                                 alt="Tour Package"/>
+                                        </div>
+                                        <div class="content clearfix">
+                                            <h5 th:text="${postInfo.name}">Paris in Love</h5>
+                                            <div class="rating-wrapper">
+                                                <div class="raty-wrapper">
+
+                                                </div>
+                                            </div>
+                                            <div class="absolute-in-content">
+                                                <div class="price" style="font-size: 15px"
+                                                     th:text="${'￥'+postInfo.price}"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- end Main Wrapper -->
+
+        <footer class="footer" th:replace="front/public:: footer"></footer>
+
+    </div>  <!-- end Container Wrapper -->
+
+
+    <!-- start Back To Top -->
+    <div id="back-to-top">
+        <a href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <!-- end Back To Top -->
+
+</div>
+<!-- JS -->
+<script type="text/javascript" src="/resource/js/front/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/resource/js/front/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.slicknav.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.placeholder.min.js"></script>
+<!--<script type="text/javascript" src="js/instagram.min.js"></script>-->
+<script type="text/javascript" src="/resource/js/front/spin.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.introLoader.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/select2.full.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.responsivegrid.js"></script>
+<script type="text/javascript" src="/resource/js/front/ion.rangeSlider.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/readmore.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/slick.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/validator.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.raty.js"></script>
+<script type="text/javascript" src="/resource/js/front/customs.js"></script>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['jquery', 'table', 'layer', 'laydate', 'form',], function () {
+        var table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            form = layui.form;
+        laydate.render({
+            elem: '#goTime'
+        });
+        $('#search').on('click', function () {
+            var province = $("#province").val();
+            location.href = '/front/index.do?province=' + province
+        });
+        $('.buyTicket').on('click', function () {
+            var startPlace = $("#startPlace").val();
+            var goTime = $("#goTime").val();
+            var city = $("#city").val();
+            location.href = '/front/ticket.do?startPlace=' + startPlace + '&goTime=' + goTime + "&city=" + city
+        })
+        $('.random').on('click', function () {
+            var province = $("#province").val();
+            layer.open({
+                type: 2,
+                title: "购票信息",
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area: ['600px', '500px'],
+                content: "/front/randomBuyTicketPage.do?province=" + province
+            });
+
+        })
+    });
+</script>
+
+</body>
+</html>

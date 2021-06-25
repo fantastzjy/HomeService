@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${wbeParameter.name}">Tour Packer</title>
+    <!-- Fav and Touch Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="images/ico/favicon.png">
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="/resource/css/front/bootstrap.min.css" media="screen">
+    <link href="/resource/css/front/animate.css" rel="stylesheet">
+    <link href="/resource/css/front/main.css" rel="stylesheet">
+    <link href="/resource/css/front/component.css" rel="stylesheet">
+    <link href="/resource/css/front/style.css" rel="stylesheet">
+    <!-- CSS Font Icons -->
+    <link rel="stylesheet" href="/resource/css/front/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/resource/css/front/icons/rivolicons/style.css">
+    <link th:href="'/resource/css/front/custom/'+${arguments.colorMain}+'.css'" rel="stylesheet">
+</head>
+
+<body class="">
+<div class="container-wrapper">
+    <header id="header" th:replace="front/public:: header"></header>
+    <div class="clear"></div>
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <!-- start end Page title -->
+        <div class="page-title detail-page-title" style="background-image:url('/resource/image/detail/header.jpg');"
+             th:style="${'background-image:url('+distribution.img+')'}">
+            <div class="container">
+                <div class="flex-row">
+                    <div class="flex-column flex-md-8 flex-sm-12">
+                        <h1 class="hero-title" th:text="${distribution.name}"></h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end Page title -->
+        <div class="breadcrumb-wrapper bg-light-2">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li><a href="/front/index.do">主页</a></li>
+                    <li><a href="" th:text="${distribution.name}">Desinations</a></li>
+                    <li><span>详情</span></li>
+                </ol>
+
+            </div>
+
+        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9" role="main">
+                        <div class="detail-content-wrapper">
+                            <div id="section-2" class="detail-content">
+                                <div class="section-title text-left">
+                                    <h4>信息</h4>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-sm-3 mb-30">
+                                            <ul class="list-info no-icon bb-dotted">
+                                                <li><span class="font600">发起人: </span><b
+                                                        th:text="${distribution.userName}"></b></li>
+                                                <li><span class="font600">浏览量: </span> <b
+                                                        th:text="${distribution.pageView}"></b></li>
+                                                <li><span class="font600">允许报名:</span> <b
+                                                        th:text="${distribution.isApply=='0'?'否':'是'}"></b></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-8 col-md-9">
+                                            <div class="itinerary-item intro-item">
+                                                <h5>描述</h5>
+                                                <div class="intro-item-body">
+                                                    <p th:utext="${distribution.content}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="section-3" class="detail-content">
+
+                            <div class="section-title text-left">
+                                <h4>投票列表</h4>
+                            </div>
+                            <div class="hotel-item-wrapper">
+                                <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
+                                    <div class="GridLex-grid-noGutter-equalHeight">
+                                        <div class="GridLex-col-4_sm-6_xs-12 mb-20" th:each="subitem:${subitemList}">
+                                            <div class="package-grid-item">
+                                                <a>
+                                                    <div class="image">
+                                                        <img th:src="${subitem.img}"
+                                                             style="width: 269.16px;height: 269.16px"/>
+                                                    </div>
+                                                    <div class="content clearfix">
+                                                        <h6 th:text="${subitem.name}">Paris in Love</h6>
+                                                        <div class="rating-wrapper">
+                                                            <div class="raty-wrapper">
+                                                                <span th:text="${subitem.subhead}"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="absolute-in-content">
+                                                            <span class="btn vote" th:id="${subitem.id}"
+                                                                  th:if="${subitem.isLock eq'1'}"><i
+                                                                    class="fa fa-heart-o"></i></span>
+                                                            <div class="price" th:text="${'票数:'+subitem.total}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="text-center pt-10" style="margin-top: 50px"
+                                     th:if="${distribution.isApply eq '1'}">
+                                    <a class="btn btn-primary apply">参与投票</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <input hidden name="ptId" id="ptId" th:value="${distribution.id}">
+</div>
+</div>
+<!-- end Main Wrapper -->
+
+
+</div>  <!-- end Container Wrapper -->
+
+
+<!-- start Back To Top -->
+
+<!-- end Back To Top -->
+
+
+<!-- JS -->
+<script type="text/javascript" src="/resource/js/front/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/resource/js/front/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.slicknav.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.placeholder.min.js"></script>
+<!--<script type="text/javascript" src="js/instagram.min.js"></script>-->
+<script type="text/javascript" src="/resource/js/front/spin.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.introLoader.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/select2.full.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.responsivegrid.js"></script>
+<script type="text/javascript" src="/resource/js/front/ion.rangeSlider.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/readmore.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/slick.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/validator.min.js"></script>
+<script type="text/javascript" src="/resource/js/front/jquery.raty.js"></script>
+<script type="text/javascript" src="/resource/js/front/customs.js"></script>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['jquery', 'table', 'layer', 'laydate', 'form',], function () {
+        var table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            form = layui.form;
+        //投票方法
+        $('.vote').on('click', function () {
+            var id = $(this).attr("id");
+            var ptId = $("#ptId").val();
+            $.ajax({
+                url: '/front/vote.do',
+                type: 'post',
+                data: {'id': id, 'ptId': ptId},
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (!result.status) {
+                        parent.layer.msg(result.msg, {time: 2000});
+                        return false;
+                    } else {
+                        layer.msg("投票成功!", {
+                            time: 900,
+                            end: function () {
+                                location.reload()
+                            }
+                        })
+                    }
+                }
+
+            });
+        })
+        //参与投票
+        $('.apply').on('click', function () {
+            var ptId = $("#ptId").val();
+            layer.open({
+                type: 2,
+                title: "参与投票",
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area: ['600px', '400px'],
+                content: "/subitem/addPage.do?ptId=" + ptId
+            });
+
+        })
+    });
+</script>
+
+</body>
+
+</html>

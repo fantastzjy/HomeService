@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="/resource/common/layui/css/layui.css" media="all"/>
+</head>
+<body style="padding: 20px; background-color: #F2F2F2;">
+<div>
+    <div class="layui-card">
+        <div class="layui-card-header">网站前台样式参数设置</div>
+        <div class="layui-card-body">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">主题颜色:</label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="defaultColor" th:field="*{arguments.colorMain}"
+                                   title="默认">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #F56961">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="sunflower" th:field="*{arguments.colorMain}"
+                                   title="向日葵">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #FFCE54">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="grass" th:field="*{arguments.colorMain}"
+                                   title="草地">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #A0D468">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="mint" th:field="*{arguments.colorMain}"
+                                   title="薄荷">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #48CFAD">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="aqua" th:field="*{arguments.colorMain}"
+                                   title="溪水">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #4FC1E9">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="lavander" th:field="*{arguments.colorMain}"
+                                   title="薰衣草">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #AC92EC">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="pinkRose" th:field="*{arguments.colorMain}"
+                                   title="粉玫瑰">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #EC87C0">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="colorMain" value="darkmgray" th:field="*{arguments.colorMain}"
+                                   title="夜间">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" readonly
+                                   style="background-color: #656D78">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input th:value="${arguments.id}" name="id" hidden=""/>
+                        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/resource/common/layui/layui.js"></script>
+<script type="text/javascript">
+
+
+    layui.use(['layer', 'layedit', 'form', 'upload',], function () {
+        var table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            form = layui.form;
+        form.on('submit(demo1)', function (data) {
+            $.ajax({
+                url: '/wbeSet/arguments.do',
+                type: 'put',
+                data: data.field,
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.status) {
+                        layer.msg("修改成功!")
+                    } else {
+                        alert("修改失败!")
+                    }
+                }
+
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
